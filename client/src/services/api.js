@@ -1,4 +1,4 @@
-const API_BASE = "";
+const API_BASE = import.meta.env.DEV ? "" : "https://bookmarksaver.onrender.com";
 
 /**
  * Fetch current authenticated user
