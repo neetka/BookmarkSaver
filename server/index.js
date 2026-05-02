@@ -23,6 +23,9 @@ app.use(
     credentials: true,
   })
 );
+// Render uses a reverse proxy — Express must trust it for secure cookies to work
+app.set("trust proxy", 1);
+
 app.use(
   session({
     secret: process.env.SESSION_SECRET || "dev-secret-key",
