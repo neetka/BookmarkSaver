@@ -15,7 +15,9 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "/auth/google/callback",
+      callbackURL: process.env.NODE_ENV === "production"
+        ? "https://bookmarksaver.onrender.com/auth/google/callback"
+        : "http://localhost:5001/auth/google/callback",
     },
     (accessToken, refreshToken, profile, done) => {
       // Extract essential user info from Google profile
